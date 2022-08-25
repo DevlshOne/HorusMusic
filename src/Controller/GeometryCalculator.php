@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-
 use App\Controller\ {
     CircleController,
     TriangleController
@@ -31,12 +29,12 @@ class GeometryCalculator
         foreach($geos as $geo) {
             // This must be a circle
             if (sizeof($geo['params']) == 1) {
-                $_circlearea = json_decode((new CircleController($geo['params'][0]))->calculateArea());
+                $_circlearea = json_decode((new CircleController())->index($geo['params'][0]));
                 $_total += $_circlearea['surface'];
             }
             // This must be a triangle
             if (sizeof($geo['params']) == 3) {
-                $_circlearea = json_decode((new TriangleController($geo['params'][0], $geo['params'][1], $geo['params'][2]))->calculateArea());
+                $_circlearea = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
                 $_total += $_circlearea['surface'];
             }
         }
@@ -57,12 +55,12 @@ class GeometryCalculator
         foreach($geos as $geo) {
             // This must be a circle
             if (sizeof($geo['params']) == 1) {
-                $_circleperim = json_decode((new CircleController($geo['params'][0]))->calculateCircumference());
+                $_circleperim = json_decode((new CircleController())->index($geo['params'][0]));
                 $_total += $_circleperim['circumference'];
             }
             // This must be a triangle
             if (sizeof($geo['params']) == 3) {
-                $_circleperim = json_decode((new TriangleController($geo['params'][0], $geo['params'][1], $geo['params'][2]))->calculateCircumference());
+                $_circleperim = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
                 $_total += $_circleperim['circumference'];
             }
         }
