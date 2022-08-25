@@ -1,15 +1,15 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+  path: /
+  controller: App\Controller\DefaultController::index
 
 circle:
-  path: /circle/{r}
+  path: /circle/{radius}
   controller: App\Controller\CircleController::index
   methods: GET
-  condition: "params[r] > 0"
+  condition: "params[radius] > 0"
 
 triangle:
-  path: /triangle/{a}{b}{c}
+  path: /triangle/{a}/{b}/{c}
   controller: App\Controller\TriangleController::index
   methods: GET
-  condition: "context.getMethod() in ['GET'] and params[a,b,c] > 0"
+  condition: "params[a,b,c] > 0"
