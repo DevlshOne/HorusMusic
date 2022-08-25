@@ -37,6 +37,9 @@ class GeometryCalculator
                 $_circlearea = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
                 $_total += $_circlearea['surface'];
             }
+            // Square...
+            // Pentagon...
+            // Hexagon...
         }
         return $_total;
     }
@@ -63,6 +66,9 @@ class GeometryCalculator
                 $_circleperim = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
                 $_total += $_circleperim['circumference'];
             }
+            // Square...
+            // Pentagon...
+            // Hexagon...
         }
         return $_total;
     }
