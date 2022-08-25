@@ -13,6 +13,10 @@ use App\Controller\ {
     TriangleController
 };
 
+/**
+ * Geometry calculator class
+ * @todo Abstraction, Unit Tests, factory
+ */
 class GeometryCalculator
 {
     /**
@@ -29,13 +33,13 @@ class GeometryCalculator
         foreach($geos as $geo) {
             // This must be a circle
             if (sizeof($geo['params']) == 1) {
-                $_circlearea = json_decode((new CircleController())->index($geo['params'][0]));
-                $_total += $_circlearea['surface'];
+                $_circle_area = json_decode((new CircleController())->index($geo['params'][0]));
+                $_total += $_circle_area['surface'];
             }
             // This must be a triangle
             if (sizeof($geo['params']) == 3) {
-                $_circlearea = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
-                $_total += $_circlearea['surface'];
+                $_triangle_area = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
+                $_total += $_triangle_area['surface'];
             }
             // Square...
             // Pentagon...
@@ -58,13 +62,13 @@ class GeometryCalculator
         foreach($geos as $geo) {
             // This must be a circle
             if (sizeof($geo['params']) == 1) {
-                $_circleperim = json_decode((new CircleController())->index($geo['params'][0]));
-                $_total += $_circleperim['circumference'];
+                $_circle_perim = json_decode((new CircleController())->index($geo['params'][0]));
+                $_total += $_circle_perim['circumference'];
             }
             // This must be a triangle
             if (sizeof($geo['params']) == 3) {
-                $_circleperim = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
-                $_total += $_circleperim['circumference'];
+                $_triangle_perim = json_decode((new TriangleController())->index($geo['params'][0], $geo['params'][1], $geo['params'][2]));
+                $_total += $_triangle_perim['circumference'];
             }
             // Square...
             // Pentagon...
